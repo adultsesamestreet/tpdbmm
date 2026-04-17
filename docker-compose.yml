@@ -1,0 +1,16 @@
+services:
+  tinymediamanager-tpdb:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    image: tpdbmm/tinymediamanager-tpdb:latest
+    container_name: tinymediamanager-tpdb
+    restart: unless-stopped
+    volumes:
+      - ./data:/data
+      - ./media/movies:/media/movies
+      - ./media/tvshows:/media/tvshows
+    ports:
+      - "4000:4000"
+    environment:
+      - TZ=UTC
